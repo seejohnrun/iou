@@ -1,5 +1,5 @@
 # A HTTP Request
-Iou HTTP Request := Object clone do(
+Iou HTTP ServerRequest := Object clone do(
 
   # This is the socket underlying the request
   socket := nil

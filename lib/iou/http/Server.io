@@ -15,7 +15,7 @@ Iou HTTP Server := Object clone do(
   # The underlying socket server
   socketServer := Server clone do(
     handleSocket := method(socket,
-      request := Iou HTTP Request clone setSocket(socket)
+      request := Iou HTTP ServerRequest clone setSocket(socket)
       requestHandler asyncSend(handleRequest(request))
     )
   )
