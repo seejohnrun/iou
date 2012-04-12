@@ -1,6 +1,6 @@
-Importer addSearchPath("./lib/iou")
+Importer addSearchPath("lib")
 
-HTTP Server clone do(
+Iou HTTP Server clone do(
 
   handleRequest = method(request,
     request write("hello")

@@ -1,31 +1,5 @@
-HTTP := Object clone
-
-# A HTTP Request
-HTTP Request := Object clone do(
-
-  # This is the socket underlying the request
-  socket := nil
-
-  # Set the socket for this request
-  setSocket := method(socket,
-    self socket = socket
-    self
-  )
-
-  # Write data in
-  write := method(data,
-    socket write(data)
-  )
-
-  # End writing data
-  end := method(
-    socket close
-  )
-
-)
-
 # A server for handling HTTP requests
-HTTP Server := Object clone do(
+Iou HTTP Server := Object clone do(
 
   init := method(
     socketServer requestHandler := self
@@ -38,7 +12,7 @@ HTTP Server := Object clone do(
   # The underlying socket server
   socketServer := Server clone do(
     handleSocket := method(socket,
-      request := HTTP Request clone setSocket(socket)
+      request := Iou HTTP Request clone setSocket(socket)
       requestHandler handleRequest(request)
     )
   )
