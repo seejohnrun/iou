@@ -1,5 +1,9 @@
 Iou := Object clone do(
 
+  # This object lets namespaces exist split up between
+  # multiple files.  It provides a base implemention of forward
+  # that will load any files called within the namespace of this
+  # Object
   NamespaceLoader := Object clone do(
 
     loadPath := nil
@@ -20,6 +24,7 @@ Iou := Object clone do(
 
   )
 
+  # Get the base of Iou set up
   HTTP := NamespaceLoader clone setLoadPath("lib/iou/http")
 
 )
