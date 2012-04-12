@@ -8,14 +8,18 @@ HTTP Request := Object clone do(
 
   # Set the socket for this request
   setSocket := method(socket,
-    self socket := socket
+    self socket = socket
     self
   )
 
-  # Handle the request
-  handle := method(
-    self socket write("hello")
-    self socket close
+  # Write data in
+  write := method(data,
+    socket write(data)
+  )
+
+  # End writing data
+  end := method(
+    socket close
   )
 
 )
@@ -23,10 +27,19 @@ HTTP Request := Object clone do(
 # A server for handling HTTP requests
 HTTP Server := Object clone do(
 
+  init := method(
+    socketServer requestHandler := self
+  )
+
+  handleRequest := method(request
+    # This will be cloned to deal with requests
+  )
+
   # The underlying socket server
   socketServer := Server clone do(
     handleSocket := method(socket,
-      HTTP Request clone setSocket(socket) handle
+      request := HTTP Request clone setSocket(socket)
+      requestHandler handleRequest(request)
     )
   )
 
