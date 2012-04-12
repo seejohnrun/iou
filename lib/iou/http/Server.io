@@ -13,7 +13,7 @@ Iou HTTP Server := Object clone do(
   socketServer := Server clone do(
     handleSocket := method(socket,
       request := Iou HTTP Request clone setSocket(socket)
-      requestHandler handleRequest(request)
+      requestHandler asyncSend(handleRequest(request))
     )
   )
 
