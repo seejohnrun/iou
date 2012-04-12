@@ -1,6 +1,9 @@
 # A server for handling HTTP requests
 Iou HTTP Server := Object clone do(
 
+  port := 7777
+  host := "127.0.0.1"
+
   init := method(
     socketServer requestHandler := self
   )
@@ -20,7 +23,7 @@ Iou HTTP Server := Object clone do(
   # Start the server up
   start := method(
     "starting" println
-    socketServer setPort(7777)
+    socketServer setPort(port) setHost(host)
     socketServer start
   )
 
