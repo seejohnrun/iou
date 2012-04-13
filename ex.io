@@ -1,5 +1,9 @@
 Importer addSearchPath("lib")
 
+Iou HTTP ClientRequest clone do(
+  method := "POST"
+)
+
 Iou HTTP Server clone do(
 
   handleRequest = method(request,
