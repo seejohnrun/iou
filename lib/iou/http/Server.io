@@ -20,11 +20,19 @@ Iou HTTP Server := Object clone do(
     )
   )
 
+  # Stop the server
+  stop := method(
+    "stopping" println
+    socketServer stop
+    self
+  )
+
   # Start the server up
   start := method(
     "starting" println
     socketServer setPort(port) setHost(host)
-    socketServer start
+    socketServer asyncSend(start)
+    self
   )
 
 )
