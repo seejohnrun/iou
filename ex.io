@@ -12,3 +12,5 @@ server := Iou HTTP Server clone do(
 System sleep(2)
 
 server stop
+
+Iou HTTP ClientRequest clone setMethod("POST") method println
